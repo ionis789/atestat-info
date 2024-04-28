@@ -1,0 +1,129 @@
+* {
+    font-family: Quosm;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    color: black;
+
+}
+
+body {
+    background-color: white;
+    height: 100vh;
+}
+
+nav {
+    box-sizing: border-box;
+    background-color: #E3F2FD;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.8rem;
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flexContainerListNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexContainerListNav > li.listNav {
+    margin-right: 2rem;
+    padding: 0.3rem;
+}
+
+
+
+.listNav > a {
+    color: #4F5458;
+    font-weight: 900;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.listNav > a:hover {
+    color: black;
+}
+
+/*Schimba culoarea la logo cand fac hover*/
+.catLogo:hover {
+    filter: invert(4%) sepia(17%) saturate(903%) hue-rotate(339deg)
+    brightness(100%) contrast(104%);
+}
+
+
+
+.topCode {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.7rem;
+}
+
+.codeArea {
+    display: flex;
+    padding: 2.5rem;
+    background-color: #222436;
+}
+/*Aici se dubleaza codeAreTxt din cauza ca din motiva la moment neclare daca las doar prima se va aplica `css proprietatile` doar la textul care nu este in span, iar daca las doar a doua invers(se aplica `css proprietatile` doar la alea cu span.
+*/
+.codeAreaTxt {
+    font-size: 1.1rem;
+    color: white;
+    font-family: "Source Code Pro";
+    white-space: pre-wrap;
+    min-width: 300px;
+}
+.codeAreaTxt *{
+    font-size: 1.2rem;
+    color: white;
+    font-family: "Source Code Pro";
+}
+
+main{
+    margin: 2.7rem;
+    margin-top: 3.3rem;
+}
+.myh1 {
+    color: black;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+.copybtn:hover {
+    fill: #fff4a3;
+    cursor: pointer;
+}
+.light-blue {
+    color: #85e1fc;
+}
+.blue {
+    color: #82aaff;
+}
+.purple {
+    color: #c09aff;
+}
+.light-green {
+    color: #c3e88d;
+}
+.red {
+    color: #ff757f;
+}
+.orange {
+    color: #ffc777;
+}
+.yelow {
+    color: #fff4a3;
+}
+.gray {
+    color: #7a88cf;
+}
+.very-light-green {
+    color: #d9eee1;
+}

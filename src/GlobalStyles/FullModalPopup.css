@@ -1,0 +1,161 @@
+.modalOverlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    padding: 1rem;
+}
+.closebtn{
+    height: 24px;
+}
+.closebtn:hover{
+    cursor: pointer;
+}
+.closesvg:hover{
+    fill: #991200;
+}
+.closesvg{
+    fill: #FF5E57;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #FF5E57;
+}
+.chevronsvg:hover{
+    fill: #0A7CFA;
+    cursor: pointer;
+}
+.upOfModal{
+    margin: 1rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    border-radius: 0.5rem;
+}
+.menuOfModal{
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.complexmodalName{
+    margin-right: 1.3rem;
+}
+.complexmodalName:hover{
+    color: #0A7CFA;
+    cursor: pointer;
+}
+.modalName:hover{
+    color: #0A7CFA;
+    cursor: pointer;
+}
+.bottomOfModal{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.modalbtn{
+    font-size: 1.2rem;
+    padding: 0.5em;
+    border-radius: 0.5rem;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    transition: background-color 0.3s ease;
+}
+.modalbtn:hover{
+    cursor: pointer;
+    background-color: #F1F3F4;
+}
+.complexmodalbtn{
+    font-size: 1.2rem;
+    padding: 0.5em;
+    border-radius: 0.5rem;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+.coplexmodalbtn:hover{
+    color: #0A7CFA;
+    background-color: #F1F3F4;
+}
+.mycolorblue{
+    color: #0A7CFA;
+}
+.dropbtn{
+    box-sizing: border-box;
+    font-size: 1.2rem;
+    margin: 0.3rem;
+    padding: 0.7rem;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    border-radius: 0.2rem;
+    display: flex;
+    transition: background-color 0.3s ease; /* Adaugă o tranziție pentru background-color */
+}
+.dropbtn:hover{
+    cursor: pointer;
+    background-color: white;
+}
+.myh1{
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+.myp{
+    font-size: 1.3rem;
+    font-weight: lighter;
+}
+.secondBox {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border-radius: 0.5rem;
+    border: solid 0.2rem #2B2B2B;
+    background-color: #0d1721;
+
+}
+.myh1WithBackround{
+    background-color: white;
+    padding: 0.3rem;
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+    border-radius: 0.5rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    vertical-align: middle;
+}
+.myCategory{
+    padding: 0.8rem;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 0.5rem;
+}
+
+.DropModalMenu{
+    width: 100%;
+    border-radius: 0.5rem;
+    display: grid;
+    transition: background-color 0.3s ease;
+}
+.DropModalMenu:hover{
+    background-color: #F1F3F4;
+}
+
+.parinte{
+    margin-top: 1rem;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap; /* Permite trecerea la rând nou dacă spațiul este insuficient */
+}
+
+.copil{
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin: 1rem;
+
+}

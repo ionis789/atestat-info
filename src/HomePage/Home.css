@@ -1,0 +1,44 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+#root{
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 100fr 1fr;
+}
+
+.allBoxes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.myIntro{
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+.firstBox {
+    padding-right: 3rem;
+    padding: 1rem;
+}
+
+.infoAtestat{
+    margin-top: 3.5rem;
+    font-size: 1.3rem;
+}
+.homePageWraper{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+}
+.mai2024{
+    display: flex;
+    justify-content: center;
+}
+.test{
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
