@@ -1,6 +1,6 @@
 import Navigation from "./Navigation";
 import HomePage from "../HomePage/HomePage";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import SubiecteBacPage from "../BacPage/SubiecteBacPage";
 
 import AtestatPage from "../AtestatPage/AtestatPage";
