@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import DataForCode from "./DataForCode.json";
+import { convertor } from "../Convertor/convertor";
+
 const CodeData = (props) => {
+  convertor(props.id);
   return (
     <>
       {DataForCode.map((item) =>

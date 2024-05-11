@@ -203,8 +203,6 @@
     "id": 50,
     "text": "#include <iostream>\nusing namespace std;\nint v[101],n,a,b,nrsol;\nvoid citire()\n{\n    cin>>n>>a>>b;\n}\nvoid afis()\n{\n    nrsol++;\n    for(int i=1;i<=n;i++)\n        cout<<v[i]<<' ';\n    cout<<endl;\n}\nint verif(int k)\n{\n    for(int i=1;i<=k-1;i++)\n        if(v[k]==v[i])\n           return 0;\n   if(v[k]==b)\n        for(int i=1;i<k-1;i++)\n              if(v[i]==a)\n                  return 0;\n   if(v[k]==a)\n           for(int i=1;i<=k-1;i++)\n              if(v[i]==b)\n              return 0;\n    return 1;\n}\nvoid bk(int k)\n{ for(int i=1;i<=n;i++)\n    {   v[k]=i;\n        if(verif(k)==1)\n            if (k==n) afis();\n            else bk(k+1);\n    }\n}\nint main()\n{citire();\nbk(1);\ncout<<nrsol;\nreturn 0;\n}\n"
   },
-
-
   {
     "id": 101,
     "text": "#include <iostream>\nusing namespace std;\n\nint produs(int a, int b)\n{\n  int interval, p = 1;\n  a > b ? interval = b : interval = a;\n  for (int i = 1; i <= interval; i++)\n  {\n    if (a % i == 0 && b % i == 0)\n      p *= i;\n  }\n  return p;\n}\n\nint main()\n{\n  cout << produs(20, 12); // 8\n  return 0;\n}\n"
@@ -216,9 +214,5 @@
   {
     "id": 103,
     "text": "#include <fstream>\n#include <iostream>\nusing namespace std;\nifstream fin(\"bac.txt\");\nint n1, n2, n3, fr[1000001], v[4] = {0};\nvoid citire()\n{\n  fin >> n1 >> n2 >> n3;\n  v[1] = n1;\n  v[2] = n2;\n  v[3] = n3;\n  int x;\n  while (fin >> x)\n  {\n    fr[x]++;\n  }\n}\n\nvoid rezolvare()\n{\n  int res[4] = {0}, cnt = 1;\n\n  for (int j = 101; j >= 10 && cnt <= 3; j--)\n  {\n    if (fr[j] >= v[cnt])\n      res[cnt++] = j;\n  }\n  if (res[3] != 0)\n  {\n    for (int i = 1; i <= 3; i++)\n      cout << res[i] << \" \";\n  }\n  else\n    cout << \"nu exista\";\n}\nint main()\n{\n  citire();\n  rezolvare();\n  return 0;\n}"
-  },
-  {
-    "id": 200,
-    "text": "#include <iostream>\nusing namespace std;\nint n, v[101];\nvoid citire()\n{\n  cin >> n;\n  for (int i = 1; i <= n; i++)\n    cin >> v[i];\n}\nvoid sortareaCuDouaForuri() // sort crescator, ptr a schimba in sort descrescator e nevoie de schimbat conditia la if pe \"<\"\n{\n  for (int i = 1; i < n; i++)\n  {\n    for (int j = i + 1; j <= n; j++)\n    {\n      if (v[i] > v[j]) // metoda celor trei pahare ptr interschimbarea a doua elemente\n      {\n        int aux = v[i];\n        v[i] = v[j];\n        v[j] = aux;\n      }\n    }\n  }\n}\n\nvoid afisDupaInterschimbare()\n{\n  for (int i = 1; i <= n; i++)\n    cout << v[i] << \" \";\n}\nint main()\n{\n  citire();\n  sortareaCuDouaForuri();\n  afisDupaInterschimbare();\n  return 0;\n}"
   }
 ]
