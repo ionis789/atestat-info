@@ -57,39 +57,39 @@ import B6 from "../assets/BacImg/B6.png";
 import B7 from "../assets/BacImg/B7.png";
 import B8 from "../assets/BacImg/B8.png";
 import B9 from "../assets/BacImg/B9.png";
-// import B10 from "../assets/BacImg/B10.png";
-// import B11 from "../assets/BacImg/B11.png";
-// import B12 from "../assets/BacImg/B12.png";
-// import B13 from "../assets/BacImg/B13.png";
-// import B14 from "../assets/BacImg/B14.png";
-// import B15 from "../assets/BacImg/B15.png";
-// import B16 from "../assets/BacImg/B16.png";
-// import B17 from "../assets/BacImg/B17.png";
-// import B18 from "../assets/BacImg/B18.png";
-// import B19 from "../assets/BacImg/B19.png";
-// import B20 from "../assets/BacImg/B20.png";
-// import B21 from "../assets/BacImg/B21.png";
-// import B22 from "../assets/BacImg/B22.png";
-// import B23 from "../assets/BacImg/B23.png";
-// import B24 from "../assets/BacImg/B24.png";
-// import B25 from "../assets/BacImg/B25.png";
-// import B26 from "../assets/BacImg/B26.png";
-// import B27 from "../assets/BacImg/B27.png";
-// import B28 from "../assets/BacImg/B28.png";
-// import B29 from "../assets/BacImg/B29.png";
-// import B30 from "../assets/BacImg/B30.png";
-// import B31 from "../assets/BacImg/B31.png";
-// import B32 from "../assets/BacImg/B32.png";
-// import B33 from "../assets/BacImg/B33.png";
-// import B34 from "../assets/BacImg/B34.png";
-// import B35 from "../assets/BacImg/B35.png";
-// import B36 from "../assets/BacImg/B36.png";
-// import B37 from "../assets/BacImg/B37.png";
-// import B38 from "../assets/BacImg/B38.png";
-// import B39 from "../assets/BacImg/B39.png";
-// import B40 from "../assets/BacImg/B40.png";
-// import B41 from "../assets/BacImg/B41.png";
-// import B42 from "../assets/BacImg/B42.png";
+import B10 from "../assets/BacImg/B10.png";
+import B11 from "../assets/BacImg/B11.png";
+import B12 from "../assets/BacImg/B12.png";
+import B13 from "../assets/BacImg/B13.png";
+import B14 from "../assets/BacImg/B14.png";
+import B15 from "../assets/BacImg/B15.png";
+import B16 from "../assets/BacImg/B16.png";
+import B17 from "../assets/BacImg/B17.png";
+import B18 from "../assets/BacImg/B18.png";
+import B19 from "../assets/BacImg/B19.png";
+import B20 from "../assets/BacImg/B20.png";
+import B21 from "../assets/BacImg/B21.png";
+import B22 from "../assets/BacImg/B22.png";
+import B23 from "../assets/BacImg/B23.png";
+import B24 from "../assets/BacImg/B24.png";
+import B25 from "../assets/BacImg/B25.png";
+import B26 from "../assets/BacImg/B26.png";
+import B27 from "../assets/BacImg/B27.png";
+import B28 from "../assets/BacImg/B28.png";
+import B29 from "../assets/BacImg/B29.png";
+import B30 from "../assets/BacImg/B30.png";
+import B31 from "../assets/BacImg/B31.png";
+import B32 from "../assets/BacImg/B32.png";
+import B33 from "../assets/BacImg/B33.png";
+import B34 from "../assets/BacImg/B34.png";
+import B35 from "../assets/BacImg/B35.png";
+import B36 from "../assets/BacImg/B36.png";
+import B37 from "../assets/BacImg/B37.png";
+import B38 from "../assets/BacImg/B38.png";
+import B39 from "../assets/BacImg/B39.png";
+import B40 from "../assets/BacImg/B40.png";
+import B41 from "../assets/BacImg/B41.png";
+import B42 from "../assets/BacImg/B42.png";
 // import B43 from "../assets/BacImg/B43.png";
 // import B44 from "../assets/BacImg/B44.png";
 // import B45 from "../assets/BacImg/B45.png";
@@ -336,139 +336,139 @@ const ImgData = (props) => {
       id: 109,
       img: B9,
     },
-    // {
-    //   id: 110,
-    //   img: B10,
-    // },
-    // {
-    //   id: 111,
-    //   img: B11,
-    // },
-    // {
-    //   id: 112,
-    //   img: B12,
-    // },
-    // {
-    //   id: 113,
-    //   img: B13,
-    // },
-    // {
-    //   id: 114,
-    //   img: B14,
-    // },
-    // {
-    //   id: 115,
-    //   img: B15,
-    // },
-    // {
-    //   id: 116,
-    //   img: B16,
-    // },
-    // {
-    //   id: 117,
-    //   img: B17,
-    // },
-    // {
-    //   id: 118,
-    //   img: B18,
-    // },
-    // {
-    //   id: 119,
-    //   img: B19,
-    // },
-    // {
-    //   id: 120,
-    //   img: B20,
-    // },
-    // {
-    //   id: 121,
-    //   img: B21,
-    // },
-    // {
-    //   id: 122,
-    //   img: B22,
-    // },
-    // {
-    //   id: 123,
-    //   img: B23,
-    // },
-    // {
-    //   id: 124,
-    //   img: B24,
-    // },
-    // {
-    //   id: 125,
-    //   img: B25,
-    // },
+    {
+      id: 110,
+      img: B10,
+    },
+    {
+      id: 111,
+      img: B11,
+    },
+    {
+      id: 112,
+      img: B12,
+    },
+    {
+      id: 113,
+      img: B13,
+    },
+    {
+      id: 114,
+      img: B14,
+    },
+    {
+      id: 115,
+      img: B15,
+    },
+    {
+      id: 116,
+      img: B16,
+    },
+    {
+      id: 117,
+      img: B17,
+    },
+    {
+      id: 118,
+      img: B18,
+    },
+    {
+      id: 119,
+      img: B19,
+    },
+    {
+      id: 120,
+      img: B20,
+    },
+    {
+      id: 121,
+      img: B21,
+    },
+    {
+      id: 122,
+      img: B22,
+    },
+    {
+      id: 123,
+      img: B23,
+    },
+    {
+      id: 124,
+      img: B24,
+    },
+    {
+      id: 125,
+      img: B25,
+    },
 
-    // {
-    //   id: 126,
-    //   img: B26,
-    // },
-    // {
-    //   id: 127,
-    //   img: B27,
-    // },
-    // {
-    //   id: 128,
-    //   img: B28,
-    // },
-    // {
-    //   id: 129,
-    //   img: B29,
-    // },
-    // {
-    //   id: 130,
-    //   img: B30,
-    // },
-    // {
-    //   id: 131,
-    //   img: B31,
-    // },
-    // {
-    //   id: 132,
-    //   img: B32,
-    // },
-    // {
-    //   id: 133,
-    //   img: B33,
-    // },
-    // {
-    //   id: 134,
-    //   img: B34,
-    // },
-    // {
-    //   id: 135,
-    //   img: B35,
-    // },
-    // {
-    //   id: 136,
-    //   img: B36,
-    // },
-    // {
-    //   id: 137,
-    //   img: B37,
-    // },
-    // {
-    //   id: 138,
-    //   img: B38,
-    // },
-    // {
-    //   id: 139,
-    //   img: B39,
-    // },
-    // {
-    //   id: 140,
-    //   img: B40,
-    // },
-    // {
-    //   id: 141,
-    //   img: B41,
-    // },
-    // {
-    //   id: 142,
-    //   img: B42,
-    // },
+    {
+      id: 126,
+      img: B26,
+    },
+    {
+      id: 127,
+      img: B27,
+    },
+    {
+      id: 128,
+      img: B28,
+    },
+    {
+      id: 129,
+      img: B29,
+    },
+    {
+      id: 130,
+      img: B30,
+    },
+    {
+      id: 131,
+      img: B31,
+    },
+    {
+      id: 132,
+      img: B32,
+    },
+    {
+      id: 133,
+      img: B33,
+    },
+    {
+      id: 134,
+      img: B34,
+    },
+    {
+      id: 135,
+      img: B35,
+    },
+    {
+      id: 136,
+      img: B36,
+    },
+    {
+      id: 137,
+      img: B37,
+    },
+    {
+      id: 138,
+      img: B38,
+    },
+    {
+      id: 139,
+      img: B39,
+    },
+    {
+      id: 140,
+      img: B40,
+    },
+    {
+      id: 141,
+      img: B41,
+    },
+    {
+      id: 142,
+      img: B42,
+    },
     // {
     //   id: 143,
     //   img: B43,

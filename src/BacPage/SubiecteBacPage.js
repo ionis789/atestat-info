@@ -37,53 +37,45 @@ const SubiecteBacPage = () => {
           ></TripleModalPopup>
           <TripleModalPopup
             id={116}
-            name="Sesiunea iunie-iulie – 28 iunie 2023"
-          ></TripleModalPopup>
-          <TripleModalPopup
-            id={119}
             name="Simulare – 29 martie 2023"
           ></TripleModalPopup>
           <TripleModalPopup
-            id={122}
+            id={119}
             name="Modele de subiecte – noiembrie 2022"
           ></TripleModalPopup>
         </div>
         <p className="myh1 mt-8">&bull; Bac 2022</p>
         <div className="parinte">
           <TripleModalPopup
-            id={125}
+            id={122}
             name="Sesiunea august-septembrie – 18 august 2022"
           ></TripleModalPopup>
           <TripleModalPopup
-            id={128}
+            id={125}
             name="Sesiunea iunie – 22 iunie 2022"
           ></TripleModalPopup>
           <TripleModalPopup
-            id={131}
+            id={128}
             name="Sesiunea specială – 20 mai 2022"
           ></TripleModalPopup>
           <TripleModalPopup
-            id={134}
+            id={131}
             name="Simulare – 30 martie 2022"
           ></TripleModalPopup>
         </div>
         <p className="myh1 mt-8">&bull; Bac 2021</p>
         <div className="parinte">
           <TripleModalPopup
-            id={137}
+            id={134}
             name="Sesiunea august-septembrie 2021 – 18 august 2021"
           ></TripleModalPopup>
           <TripleModalPopup
-            id={140}
+            id={137}
             name="Sesiunea iunie-iulie 2021 – 30 iunie 2021"
           ></TripleModalPopup>
           <TripleModalPopup
-            id={143}
+            id={140}
             name="Sesiunea specială – 20 mai 2021"
-          ></TripleModalPopup>
-          <TripleModalPopup
-            id={146}
-            name="Simulare – 24 martie 2021"
           ></TripleModalPopup>
         </div>
       </main>
