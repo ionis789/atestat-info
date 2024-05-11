@@ -1,5 +1,6 @@
 * {
-    font-family: Quosm;
+    font-family: "Roboto", sans-serif;
+
     margin: 0;
     padding: 0;
     text-decoration: none;
@@ -69,7 +70,7 @@ nav {
 .codeArea {
     display: flex;
     padding: 2.5rem;
-    background-color: #222436;
+    background-color: #1F1F1F;
 }
 /*Aici se dubleaza codeAreTxt din cauza ca din motiva la moment neclare daca las doar prima se va aplica `css proprietatile` doar la textul care nu este in span, iar daca las doar a doua invers(se aplica `css proprietatile` doar la alea cu span.
 */
@@ -100,30 +101,29 @@ main{
     fill: #fff4a3;
     cursor: pointer;
 }
-.light-blue {
-    color: #85e1fc;
-}
-.blue {
-    color: #82aaff;
-}
+
+
 .purple {
-    color: #c09aff;
+    color: #C184BC;
 }
-.light-green {
+.lightGreen {
     color: #c3e88d;
 }
-.red {
-    color: #ff757f;
+.brown{
+    color: #CE9178;
 }
-.orange {
-    color: #ffc777;
+.blue {
+    color: #569CD6;
 }
-.yelow {
-    color: #fff4a3;
+.lightBlue {
+    color: #9CDCFE;
 }
-.gray {
-    color: #7a88cf;
+.green{
+    color: #4EC9B0;
 }
-.very-light-green {
-    color: #d9eee1;
+.yellow {
+    color: #FFD602;
+}
+.lightYellow {
+    color: #DCDCAA;
 }

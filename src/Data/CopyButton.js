@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { ReactComponent as CopySvg } from "../assets/icons/copy.svg";
-import DataForClipBoard from "./DataForClipBoard.json";
+import DataForClipBoard from "./CodeData.json";
 const CopyButtonWithData = (props) => {
   const [stateOfClicked, set] = useState(false);
 
   const handleCopyClick = () => {
-    debugger;
     const selectedObject = DataForClipBoard.find((obj) => obj.id === props.id);
     if (selectedObject) {
       const textToCopy = selectedObject.text;

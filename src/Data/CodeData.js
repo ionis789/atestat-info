@@ -1,21 +1,14 @@
 import React from "react";
-import DataForCode from "./DataForCode.json";
 import { convertor } from "../Convertor/convertor";
 
 const CodeData = (props) => {
-  convertor(props.id);
+  const formatedText = convertor(props.id);
   return (
-    <>
-      {DataForCode.map((item) =>
-        props.id === item.id ? (
-          <div
-            key={item.id}
-            className="codeArea"
-            dangerouslySetInnerHTML={{ __html: item.text }}
-          ></div>
-        ) : null,
-      )}
-    </>
+    <div
+      key={props.id}
+      className="codeArea"
+      dangerouslySetInnerHTML={{ __html: formatedText }}
+    ></div>
   );
 };
 export default CodeData;
