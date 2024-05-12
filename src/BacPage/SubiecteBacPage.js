@@ -13,11 +13,11 @@ const SubiecteBacPage = () => {
         <p className="myh1 mt-8">&bull; Bac 2024</p>
         <div className="parinte">
           <TripleModalPopup
-            id={104}
+            id={101}
             name="Simulare – 6 martie 2024"
           ></TripleModalPopup>
           <TripleModalPopup
-            id={101}
+            id={104}
             name="Model de subiect – noiembrie 2023"
           ></TripleModalPopup>
         </div>

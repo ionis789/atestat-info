@@ -501,8 +501,6 @@ const ImgData = (props) => {
     //   id: 150,
     //   img: B50,
     // },
-
-    // Alte img în vectorul de date
   ];
 
   return (

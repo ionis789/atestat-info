@@ -193,7 +193,7 @@
   },
   {
     "id": 48,
-    "text": ""
+    "text": "#include <iostream>\n#include <fstream>\n#include <cstring>\nusing namespace std;\n\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\n\nchar s[256], voc[] = \"aeiouAEIOU\";\n\nint main()\n{\n    fin.get(s, 255);\n\n    char primVoc;\n    int nrAparitiiPrimVoc = 0;\n    for (int i = 0; i < strlen(s); i++)\n    {\n        if (strchr(voc, s[i]))\n        {\n            primVoc = s[i];\n            break;\n        }\n    }\n    for (int i = 0; i < strlen(s); i++)\n    {\n        if (strchr(voc, s[i]))\n        {\n            if (primVoc == s[i])\n                nrAparitiiPrimVoc++;\n        }\n    }\n    fout << primVoc << \" \" << nrAparitiiPrimVoc << endl;\n    for (int i = 0; i < strlen(s); i++)\n    {\n\n        if (!strchr(voc, s[i]))\n        {\n            int cnt = 0;\n            for (int j = 0; j < strlen(s); j++)\n            {\n                if (s[i] == s[j])\n                    cnt++;\n            }\n            fout << s[i] << \" \" << cnt << \" \";\n        }\n    }\n    return 0;\n}\n"
   },
   {
     "id": 49,
@@ -205,22 +205,170 @@
   },
   {
     "id": 101,
-    "text": "#include <iostream>\nusing namespace std;\n\nint produs(int a, int b)\n{\n  int interval, p = 1;\n  a > b ? interval = b : interval = a;\n  for (int i = 1; i <= interval; i++)\n  {\n    if (a % i == 0 && b % i == 0)\n      p *= i;\n  }\n  return p;\n}\n\nint main()\n{\n  cout << produs(20, 12); // 8\n  return 0;\n}\n"
-  },
-  {
-    "id": 102,
-    "text": "#include <iostream>\n#include <cstring>\nusing namespace std;\nint n;\nchar s[101], firstLine[25][25], secondLine[25][25], cntFirstLine, cntSecondLine;\nbool ok1 = false, ok2 = false; // presupun ca ambele multimi sunt vide\n\nvoid citire()\n{\n  cin >> n;\n  cin.get(); // in asa fel evit backspace, pentru a putea trece la urmatoarea linie\n  cin.get(s, 101);\n}\n\nvoid rezolvare()\n{\n\n  char *p = strtok(s, \" \");\n  while (p != NULL)\n  {\n    if (strlen(p) < n)\n    {\n      strcpy(firstLine[cntFirstLine++], p);\n      ok1 = true;\n    }\n\n    else if (strlen(p) > n)\n    {\n      strcpy(secondLine[cntSecondLine++], p);\n      ok2 = true;\n    }\n\n    p = strtok(NULL, \" \");\n  }\n}\n\nvoid afis()\n{\n  if (ok1 == true && ok2 == true)\n  {\n    for (int i = 0; i < cntFirstLine; i++)\n      cout << firstLine[i] << \" \";\n    cout << endl;\n\n    for (int i = 0; i < cntSecondLine; i++)\n      cout << secondLine[i] << \" \";\n  }\n  else\n    cout << \"nu exista\";\n}\n\nint main()\n{\n  citire();\n  rezolvare();\n  afis();\n  return 0;\n}"
-  },
-  {
-    "id": 103,
-    "text": "#include <fstream>\n#include <iostream>\nusing namespace std;\nifstream fin(\"bac.txt\");\nint n1, n2, n3, fr[1000001], v[4] = {0};\nvoid citire()\n{\n  fin >> n1 >> n2 >> n3;\n  v[1] = n1;\n  v[2] = n2;\n  v[3] = n3;\n  int x;\n  while (fin >> x)\n  {\n    fr[x]++;\n  }\n}\n\nvoid rezolvare()\n{\n  int res[4] = {0}, cnt = 1;\n\n  for (int j = 101; j >= 10 && cnt <= 3; j--)\n  {\n    if (fr[j] >= v[cnt])\n      res[cnt++] = j;\n  }\n  if (res[3] != 0)\n  {\n    for (int i = 1; i <= 3; i++)\n      cout << res[i] << \" \";\n  }\n  else\n    cout << \"nu exista\";\n}\nint main()\n{\n  citire();\n  rezolvare();\n  return 0;\n}"
-  },
-  {
-    "id": 104,
     "text": "#include <iostream>\nusing namespace std;\n\nint impare(int n){\n    int aux = n;\n    int copyN = 0;\n    int og = 0;\n    while(aux){\n        int c =aux %10;\n        if(c%2 != 0) copyN = copyN*10 + c;\n        copyN = copyN*10 + c;\n        aux /=10;\n    }\n\n    while(copyN){\n        og = og *10 + copyN%10;\n        copyN/=10;\n    }\n    if(og==n)\n    return -1;\n    return og;\n}\n\nint main () \n{\n    cout<<impare(26);\n    return 0;\n}"
   },
   {
-    "id": 105,
+    "id": 102,
     "text": "#include <iostream>\n#include <cstring>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint n;\nchar lista[101][11], sablon[256], res[10][100], cntRes = 0;\nvoid citire()\n{\n    fin >> n;\n    fin.ignore();\n    for (int i = 0; i < n; i++)\n    {\n        char *p;\n        fin >> p;\n        strcpy(lista[i], p);\n        fin.ignore();\n    }\n    fin.ignore();\n    fin.get(sablon, 256);\n}\n\nbool isGeneric(char *word)\n{\n    if (word[0] == '*')\n        return true;\n    return false;\n}\n\nvoid rezolvare()\n{\n    bool ok = true;\n    char *p = strtok(sablon, \" \");\n    while (p && ok)\n    {\n\n        if (isGeneric(p))\n        {\n            bool verif = false; // presupun ca nu am cvnt inlocuitor pentru generic\n            char *copy;\n            for (int i = 0; i < n; i++)\n            {\n                if (strlen(lista[i]) == strlen(p))\n                {\n                    strcpy(res[cntRes++], lista[i]);\n                    verif = true;\n                    break;\n                }\n            }\n            if (!verif)\n                ok = false;\n        }\n        else\n\n        {\n            strcpy(res[cntRes++], p);\n        }\n        p = strtok(NULL, \" \");\n    }\n    if (!ok)\n        fout << \"imposibil\";\n    else\n        for (int i = 0; i < cntRes; i++)\n            fout << res[i] << \" \";\n}\nint main()\n{\n    citire();\n    rezolvare();\n    return 0;\n}"
+  },
+  {
+    "id": 103,
+    "text": "3"
+  },
+  {
+    "id": 104,
+    "text": "#include <iostream>\nusing namespace std;\n\nint produs(int a, int b)\n{\n  int interval, p = 1;\n  a > b ? interval = b : interval = a;\n  for (int i = 1; i <= interval; i++)\n  {\n    if (a % i == 0 && b % i == 0)\n      p *= i;\n  }\n  return p;\n}\n\nint main()\n{\n  cout << produs(20, 12); // 8\n  return 0;\n}\n"
+  },
+  {
+    "id": 105,
+    "text": "#include <iostream>\n#include <cstring>\nusing namespace std;\nint n;\nchar s[101], firstLine[25][25], secondLine[25][25], cntFirstLine, cntSecondLine;\nbool ok1 = false, ok2 = false; // presupun ca ambele multimi sunt vide\n\nvoid citire()\n{\n  cin >> n;\n  cin.get(); // in asa fel evit backspace, pentru a putea trece la urmatoarea linie\n  cin.get(s, 101);\n}\n\nvoid rezolvare()\n{\n\n  char *p = strtok(s, \" \");\n  while (p != NULL)\n  {\n    if (strlen(p) < n)\n    {\n      strcpy(firstLine[cntFirstLine++], p);\n      ok1 = true;\n    }\n\n    else if (strlen(p) > n)\n    {\n      strcpy(secondLine[cntSecondLine++], p);\n      ok2 = true;\n    }\n\n    p = strtok(NULL, \" \");\n  }\n}\n\nvoid afis()\n{\n  if (ok1 == true && ok2 == true)\n  {\n    for (int i = 0; i < cntFirstLine; i++)\n      cout << firstLine[i] << \" \";\n    cout << endl;\n\n    for (int i = 0; i < cntSecondLine; i++)\n      cout << secondLine[i] << \" \";\n  }\n  else\n    cout << \"nu exista\";\n}\n\nint main()\n{\n  citire();\n  rezolvare();\n  afis();\n  return 0;\n}"
+  },
+  {
+    "id": 106,
+    "text": "#include <fstream>\n#include <iostream>\nusing namespace std;\nifstream fin(\"bac.txt\");\nint n1, n2, n3, fr[1000001], v[4] = {0};\nvoid citire()\n{\n  fin >> n1 >> n2 >> n3;\n  v[1] = n1;\n  v[2] = n2;\n  v[3] = n3;\n  int x;\n  while (fin >> x)\n  {\n    fr[x]++;\n  }\n}\n\nvoid rezolvare()\n{\n  int res[4] = {0}, cnt = 1;\n\n  for (int j = 101; j >= 10 && cnt <= 3; j--)\n  {\n    if (fr[j] >= v[cnt])\n      res[cnt++] = j;\n  }\n  if (res[3] != 0)\n  {\n    for (int i = 1; i <= 3; i++)\n      cout << res[i] << \" \";\n  }\n  else\n    cout << \"nu exista\";\n}\nint main()\n{\n  citire();\n  rezolvare();\n  return 0;\n}"
+  },
+  {
+    "id": 107,
+    "text": "7"
+  },
+  {
+    "id": 108,
+    "text": "8"
+  },
+  {
+    "id": 109,
+    "text": "9"
+  },
+  {
+    "id": 110,
+    "text": "#include <iostream>\nusing namespace std;\nint n;\nvoid citire()\n{\n    cin >> n;\n}\nint S(int k)\n{\n    int s = 0;\n    for (int i = 1; i <= k; i++)\n    {\n        if (k % i == 0)\n            s += i;\n    }\n    return s;\n}\nint abundent(int n)\n{\n    for (int i = 1; i < n; i++)\n    {\n        cout << \"i=\" << i << \" S(i)/i=\" << (double)S(i) / i << \" S(n)/n=\" << (double)S(n) / n << endl;\n        if ((double)S(i) / i > (double)S(n) / n)\n            return 0;\n    }\n    return 1;\n}\nint main()\n{\n    citire();\n    cout << abundent(n);\n    return 0;\n}\n"
+  },
+  {
+    "id": 111,
+    "text": "#include <iostream>>\n#include <fstream>>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint ns, np, v[101][101];\nstruct\n{\n    int val, poz;\n} maxi;\n\nvoid citire()\n{\n    fin >> ns >> np;\n    for (int i = 1; i <= ns; i++)\n        for (int j = 1; j <= np; j++)\n            fin >> v[i][j];\n}\n\nvoid solution()\n{\n    for (int i = 1; i <= ns; i++)\n    {\n        maxi.poz = 1;\n        maxi.val = 0;\n        for (int j = 1; j <= np; j++)\n        {\n            if (maxi.val < v[i][j])\n            {\n                maxi.val = v[i][j];\n                maxi.poz = j;\n            }\n        }\n        fout << i << \":\" << maxi.poz << \" \";\n    }\n}\nint main()\n{\n    citire();\n    solution();\n    return 0;\n}\n"
+  },
+  {
+    "id": 112,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint n, k;\nstruct\n{\n    int nr, nr_sufix, nr_prefix;\n} v[1001];\n\nint conditie(int x)\n{\n    int cnt = 0;\n    while (x)\n    {\n        cnt++;\n        x /= 10;\n    }\n    return cnt;\n}\n\nint sufix(int x)\n{\n    return (x / 10 % 10) * 10 + x % 10;\n}\n\nint prefix(int x)\n{\n    int p = 1;\n    int nr_cif = conditie(x);\n    while (nr_cif)\n    {\n        nr_cif--;\n        p *= 10;\n    }\n    return x % p / (p / 100);\n}\n\nvoid citire()\n{\n    fin >> n;\n\n    v[++k].nr = prefix(n);\n    for (int i = 1; i <= k; i++)\n    {\n        if (v[i].nr == prefix(n))\n            v[k].nr_prefix++;\n    }\n\n    v[++k].nr = sufix(n);\n    for (int i = 1; i <= k; i++)\n    {\n        if (v[i].nr == sufix(n))\n            v[k].nr_sufix++;\n    }\n\n    while (fin >> n)\n    {\n\n        if (conditie(n) > 2)\n        {\n            bool okp = false, oks = false;\n\n            for (int i = 1; i <= k; i++)\n            {\n                if (v[i].nr == prefix(n))\n                {\n                    v[i].nr_prefix++;\n                    okp = true;\n                }\n            }\n            if (okp == false)\n            {\n                v[++k].nr = prefix(n);\n                v[k].nr_prefix++;\n            }\n\n            for (int i = 1; i <= k; i++)\n            {\n                if (v[i].nr == sufix(n))\n                {\n                    v[i].nr_sufix++;\n                    oks = true;\n                }\n            }\n            if (oks == false)\n            {\n                v[++k].nr = sufix(n);\n                v[k].nr_sufix++;\n            }\n        }\n    }\n}\nint afis(int nr)\n{\n    if (nr == k)\n    {\n        if (v[nr].nr_prefix == v[nr].nr_sufix)\n            return 1;\n        return 0;\n    }\n    else if (v[nr].nr_prefix == v[nr].nr_sufix)\n        return 1 + afis(++nr);\n\n    return afis(++nr);\n}\nint main()\n{\n    citire();\n    fout << afis(1);\n    return 0;\n}\n"
+  },
+  {
+    "id": 113,
+    "text": "13"
+  },
+  {
+    "id": 114,
+    "text": "14"
+  },
+  {
+    "id": 115,
+    "text": "15"
+  },
+  {
+    "id": 116,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint x, y, cnt;\nvoid citire()\n{\n    fin >> x >> y;\n}\nint nrdiviziori(int n)\n{\n    int nr = 0;\n    for (int i = 1; i <= n; i++)\n    {\n        if (n % i == 0 && i % 2 == 1)\n            nr++;\n    }\n    return nr;\n}\nvoid rezolvare()\n{\n    for (int i = x; i <= y; i++)\n    {\n        if (nrdiviziori(i) == 3)\n            cnt++;\n    }\n    fout << cnt;\n}\nint main()\n{\n    citire();\n    rezolvare();\n    return 0;\n}"
+  },
+  {
+    "id": 117,
+    "text": "#include <iostream>\n#include <cstring>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nchar s[256], sir[] = \"FAMILIAGENULSPECIA\", sep[] = \" .,\", aux[256];\nint nr = 0;\nvoid citire()\n{\n    fin.get(s, 256);\n}\nvoid rezolvare()\n{\n    char *p = strtok(s, sep);\n    while (p != NULL)\n    {\n        if (strstr(sir, p) != NULL)\n        {\n            strncpy(aux, strstr(sir, p), 3); // cauta sir in alt sir, strchr cauta caracter in sir\n            for (int i = 0; i < strlen(aux); i++)\n            {\n                aux[i] += 32;\n                fout << aux[i];\n            }\n            fout << \". \";\n        }\n        else\n            fout << p << \" \";\n        p = strtok(NULL, sep);\n    }\n}\nint main()\n{\n    citire();\n    rezolvare();\n    return 0;\n}"
+  },
+  {
+    "id": 118,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint n, maxi = -1, nr, cnt, a[101], v[101];\nvoid citire()\n{\n    while (fin >> n)\n    {\n        cnt++;\n        a[cnt] = n;\n        if (n == maxi && a[cnt - 1] < maxi)\n            v[++nr] = cnt;\n        if (n > maxi)\n        {\n            v[++nr] = cnt;\n            maxi = n;\n        }\n    }\n}\nvoid afis()\n{\n    for (int i = 1; i <= nr; i++)\n        fout << v[i] << \" \";\n}\nint main()\n{\n    citire();\n    afis();\n    return 0;\n}"
+  },
+  {
+    "id": 119,
+    "text": "#include <iostream>\nusing namespace std;\nint n, ok = 1;\nvoid citire()\n{\n    cin >> n;\n}\nvoid rezolvare()\n{\n    while (n)\n    {\n        if (n % 10 != 2 && n % 10 != 3)\n            ok = 0;\n        n /= 10;\n    }\n    if (ok)\n        cout << 1;\n    else\n        cout << 0;\n}\nint main()\n{\n    citire();\n    rezolvare();\n    return 0;\n}"
+  },
+  {
+    "id": 120,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint n,v[101][101],cnt;\nstruct iint {\n    int val,lin;\n}a[101];\nvoid citire()\n{\n    fin>>n;\n    for(int i=1;i<=n;i++)\n        for(int j=1;j<=n;j++)\n            fin>>v[i][j];\n}\nvoid rezolvare1()\n{\n    for(int i=2;i<=n-1;i++)\n    {\n        for(int j=2;j<=n-1;j++)\n        {\n            int ok=1;\n            if(v[i][j]==3)\n            {\n                if(v[i-1][j]==0) ok=0;\n                if(v[i][j+1]==0) ok=0;\n                if(v[i+1][j]==0) ok=0;\n                if(v[i][j-1]==0) ok=0;\n                if(ok)\n                    fout<<i<<\" \";\n            }\n            \n        }\n    }\n}\nvoid rezolvare2()\n{\n    for(int j=1;j<=n;j++)\n    {\n        a[++cnt].val=v[1][j];\n        a[cnt].lin=1;\n    }\n    for(int i=2;i<=n;i++)\n    {\n        a[++cnt].val=v[i][n];\n        a[cnt].lin=i;\n    }\n    for(int j=n-1;j>=1;j--)\n    {\n        a[++cnt].val=v[n][j];\n        a[cnt].lin=n;\n    }\n    for(int i=n-1;i>=1;i--)\n    {\n        a[++cnt].val=v[i][1];\n        a[cnt].lin=i;\n    }\n    for(int i=1;i<=cnt;i++)\n    {\n        if(a[i].val==3)\n            if(a[i-1].val!=0&&a[i+1].val!=0)\n                fout<<a[i].lin<<\" \";\n    }\n}\nint main ()\n{\n    citire();\n    rezolvare1();\n    rezolvare2();\n    return 0;\n}"
+  },
+  {
+    "id": 121,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint n, v[101];\nvoid citire()\n{\n    fin >> n;\n    for (int i = 1; i <= 2 * n; i++)\n        fin >> v[i];\n}\nint p_ordonat(int x, int y)\n{\n    if (x % 2 == 0 && y % 2 == 0)\n        return 1;\n    if (x % 2 == 1 && y % 2 == 1)\n        return 1;\n    if (x % 2 == 1 && y % 2 == 0 && x > y)\n        return 1;\n    if (x % 2 == 1 && y % 2 == 0 && x <= y)\n        return 0;\n    if (x % 2 == 0 && y % 2 == 1 && x > y)\n        return 1;\n    if (x % 2 == 0 && y % 2 == 1 && x <= y)\n        return 0;\n    return 0;\n}\nint rezolvare()\n{\n    for (int i = 1; i <= n; i++)\n        for (int j = n + 1; j <= 2 * n; j++)\n        {\n            if (p_ordonat(v[i], v[j]) == 0)\n                return 0;\n        }\n    return 1;\n}\nint main()\n{\n    citire();\n    fout << rezolvare();\n    return 0;\n}"
+  },
+  {
+    "id": 122,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint n, x, p;\nvoid citire()\n{\n    fin >> n >> x >> p;\n}\nvoid oglindit()\n{\n    int og = 0;\n    int nr = 0;\n    while (n)\n    {\n        if (nr == p)\n            og = og * 10 + x;\n        else\n            og = og * 10 + n % 10;\n        nr++;\n        n /= 10;\n    }\n    n = og;\n    og = 0;\n    while (n)\n    {\n        og = og * 10 + n % 10;\n        n /= 10;\n    }\n    fout << og;\n}\nint main()\n{\n    citire();\n    oglindit();\n    return 0;\n}"
+  },
+  {
+    "id": 123,
+    "text": "#include <iostream>\n#include <cstring>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nchar s[256], voc[] = \"aeiou\";\nvoid citire()\n{\n    fin.get(s, 256);\n}\nvoid rezolvare()\n{\n    for (int i = 0; i < strlen(s); i++)\n    {\n        if (strchr(voc, s[i]) == NULL)\n        {\n            int ok = 1;\n            for (int j = 0; j < 5 && ok == 1; j++)\n            {\n                if (voc[j] > s[i])\n                {\n                    s[i] = voc[j - 1];\n                    ok = 0;\n                }\n            }\n        }\n    }\n    fout << s;\n}\nint main()\n{\n    citire();\n    rezolvare();\n    return 0;\n}"
+  },
+  {
+    "id": 124,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint n, nr_de_siruri = 1, nr_de_elemente = 1, cn, maxi, maxip;\nint paritate(int a, int b)\n{\n    if (a % 2 == 0 && b % 2 == 0)\n        return 1;\n    if (a % 2 == 1 && b % 2 == 1)\n        return 1;\n    return 0;\n}\nvoid citire()\n{\n    while (fin >> n)\n    {\n        if (paritate(cn, n) == 1)\n        {\n            nr_de_elemente++;\n            if (nr_de_elemente >= 3)\n            {\n                maxi = nr_de_elemente;\n\n                if (maxi == maxip)\n                    nr_de_siruri++;\n\n                if (maxi > maxip)\n                    nr_de_siruri = 1;\n            }\n        }\n\n        if (paritate(cn, n) == 0)\n        {\n            if (maxip < maxi)\n            {\n                maxip = maxi;\n            }\n            nr_de_elemente = 1;\n        }\n        cn = n;\n    }\n    fout << nr_de_siruri;\n}\nint main()\n{\n    citire();\n    return 0;\n}\n"
+  },
+  {
+    "id": 125,
+    "text": "#include <iostream>\nusing namespace std;\nint n, nr = 0;\nvoid citire()\n{\n    cin >> n;\n}\nint og(int x)\n{\n    int og = 0;\n    while (x)\n    {\n        og = og * 10 + x % 10;\n        x /= 10;\n    }\n    return og;\n}\nvoid formarenr()\n{\n    n = og(n);\n    while (n)\n    {\n        if (n % 10 == 2 && (n % 100) / 10 == 2)\n        {\n            nr = nr * 100 + 20;\n            n /= 100;\n        }\n        else\n        {\n            nr = nr * 10 + n % 10;\n            n /= 10;\n        }\n    }\n    cout << nr;\n}\nint main()\n{\n    citire();\n    formarenr();\n    return 0;\n}\n"
+  },
+  {
+    "id": 126,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint n, m, v[101][101], nr, a[101], mi, cnt;\nvoid citire()\n{\n    fin >> n >> m;\n    for (int i = 1; i <= n; i++)\n        for (int j = 1; j <= m; j++)\n            fin >> v[i][j];\n}\nvoid ord(int v[], int cnt)\n{\n    for (int i = 1; i < cnt; i++)\n        for (int j = i + 1; j <= cnt; j++)\n        {\n            if (v[i] > v[j])\n            {\n                int aux = v[i];\n                v[i] = v[j];\n                v[j] = aux;\n            }\n        }\n}\nvoid minimul()\n{\n    for (int i = 1; i <= n; i++)\n    {\n        for (int j = 1; j <= m; j++)\n        {\n            cnt = 0;\n            if (v[i - 1][j])\n                a[++cnt] = v[i - 1][j];\n            if (v[i][j + 1])\n                a[++cnt] = v[i][j + 1];\n            if (v[i + 1][j])\n                a[++cnt] = v[i + 1][j];\n            if (v[i][j - 1])\n                a[++cnt] = v[i][j - 1];\n            ord(a, cnt);\n            mi = a[1];\n            if (v[i][j] < mi)\n            {\n                nr += mi - v[i][j];\n                // fout<<v[i][j]<<\" \"<<mi<<endl;\n            }\n        }\n    }\n    fout << nr;\n}\nvoid afisare_element()\n{\n    for (int i = 1; i <= n; i++)\n    {\n        for (int j = 1; j <= m; ++j)\n        {\n\n            fout << \"   \" << v[i - 1][j];\n            fout << endl;\n            fout << v[i][j - 1] << \"  \" << v[i][j] << \"  \" << v[i][j + 1];\n            fout << endl;\n            fout << \"   \" << v[i + 1][j];\n            fout << endl;\n            fout << endl;\n        }\n    }\n}\nint main()\n{\n    citire();\n    // afisare_element();\n    minimul();\n    return 0;\n}"
+  },
+  {
+    "id": 127,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint x, y, n, ultimul_n = 0, cnt = 0;\nvoid citire_Rezolvare()\n{\n  fin >> x >> y;\n  while (fin >> n)\n  {\n    if (n >= x && n <= y)\n      if (n != ultimul_n)\n      {\n        cnt++;\n        ultimul_n = n;\n      }\n  }\n  fout << cnt;\n}\nint main()\n{\n  citire_Rezolvare();\n  return 0;\n}\n"
+  },
+  {
+    "id": 128,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint n, x, y, ok = 1;\nvoid citire()\n{\n    fin >> n;\n}\nvoid rezultat()\n{\n    for (int i = 2; i <= sqrt(n) / 2; i++)\n    {\n        for (int j = 3; j <= sqrt(n) / 2; j++)\n        {\n            if ((i * i) * (j * j) == n && ok == 1)\n            {\n                x = i;\n                y = j;\n                ok = 0;\n            }\n        }\n    }\n    fout << x << \" \" << y;\n}\nint main()\n{\n    citire();\n    rezultat();\n    return 0;\n}"
+  },
+  {
+    "id": 129,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint n, v[101][101];\nvoid citire()\n{\n    fin >> n;\n    for (int i = 1; i <= n; i++)\n        for (int j = 1; j <= n; j++)\n            fin >> v[i][j];\n}\nvoid stergere(int poz)\n{\n    for (int d = poz; d < n; d++)\n    {\n        v[poz][d] = v[poz][d + 1];\n    }\n}\nvoid rezolvare()\n{\n    for (int i = 1; i <= n; i++)\n    {\n        for (int j = 1; j <= n; j++)\n        {\n            if (i == j)\n                stergere(i);\n        }\n    }\n}\nvoid afisare()\n{\n    for (int i = 1; i <= n; i++)\n    {\n        for (int j = 1; j < n; j++)\n            fout << v[i][j] << \" \";\n        fout << endl;\n    }\n}\nint main()\n{\n    citire();\n    rezolvare();\n    afisare();\n    return 0;\n}"
+  },
+  {
+    "id": 130,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint n, pren, cnt, nraparitii, maxi, maxip;\nvoid citire()\n{\n    while (fin >> n)\n    {\n        cnt++;\n        if (cnt > 1)\n        {\n\n            if (nraparitii == pren)\n            {\n                maxi += nraparitii;\n                if (maxi > maxip)\n                    maxip = maxi;\n                nraparitii = 0;\n            }\n            else if (nraparitii < pren && pren != n)\n            {\n                if (maxip < maxi)\n                    maxip = maxi;\n                maxi = 0;\n                nraparitii = 0;\n            }\n        }\n        nraparitii++;\n        pren = n;\n    }\n    if (nraparitii == pren && pren == n)\n    {\n        maxi += nraparitii;\n        if (maxip < maxi)\n            maxip = maxi;\n    }\n    fout << maxip;\n}\nint main()\n{\n    citire();\n    return 0;\n}"
+  },
+  {
+    "id": 131,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint x, y, n, k;\nvoid citire()\n{\n    fin >> x >> y >> n;\n}\nint rest()\n{\n    for (int i = n; i >= 1; i--)\n        if (i % x == 2 && i % y == 2)\n        {\n            k = i;\n            return k;\n        }\n    return 0;\n}\nint main()\n{\n    citire();\n    fout << rest();\n    return 0;\n}"
+  },
+  {
+    "id": 132,
+    "text": "#include <iostream>\n#include <cstring>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint poz, ok;\nchar s[256], x[50];\nvoid citire()\n{\n    fin.getline(s, 256);\n    fin.get(x, 50);\n}\nvoid result()\n{\n    for (int i = 0; i < strlen(s); i++)\n    {\n        if (s[i] == ';')\n        {\n            ok = 1;\n            if (s[poz + strlen(x)] == ' ')\n            {\n                for (int k = 0; k < strlen(x); k++)\n                {\n                    if (s[poz + k] != x[k])\n                        ok = 0;\n                }\n            }\n            else\n                ok = 0;\n            if (ok)\n            {\n                for (int j = poz + (strlen(x) + 1); j < i; j++)\n                    fout << s[j];\n                fout << \" \";\n            }\n            poz = i + 2;\n        }\n    }\n}\nint main()\n{\n    citire();\n    result();\n    return 0;\n}"
+  },
+  {
+    "id": 133,
+    "text": "#include <iostream>\n#include <fstream>\n#include <cmath>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nlong long n, p, pd = 1, ok = 1, nr;\nvoid citire()\n{\n    fin >> n;\n}\nvoid afis()\n{\n    for (long long i = 1; i <= n; i++)\n        pd = pd * i;\n    while (ok)\n    {\n        nr = pow(45, n);\n        if (pd % nr == 0)\n        {\n            ok = 0;\n            p = n;\n        }\n        n--;\n    }\n    fout << p;\n}\nint main()\n{\n    citire();\n    afis();\n    return 0;\n}\n"
+  },
+  {
+    "id": 134,
+    "text": "#include <iostream>\nusing namespace std;\nint n, b;\nvoid citire()\n{\n    cin >> n;\n}\nvoid results()\n{\n    for (int i = n; i >= 1; i--)\n    {\n        b = 1;\n        for (int j = 1; j <= 3; j++)\n            b = b * i;\n        cout << b << \" \";\n    }\n}\nint main()\n{\n    citire();\n    results();\n    return 0;\n}"
+  },
+  {
+    "id": 135,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint k, n, v[101][101], nr = 1, cntsub_d, cntdeasupra_d;\nvoid citire()\n{\n    fin >> k >> n;\n}\nvoid construire()\n{\n    for (int i = 1; i <= n; i++)\n    {\n        cntdeasupra_d = (k * nr) + 1;  \n        cntsub_d = ((k * nr) - i) + 1; \n        for (int j = 1; j <= n; j++)\n        {\n            if (i == j)\n            {\n                v[i][j] = k * nr;\n                nr++;\n            }\n            else if (i > j)\n            {\n                v[i][j] = cntsub_d;\n                cntsub_d++;\n            }\n            else if (i < j)\n            {\n                v[i][j] = cntdeasupra_d;\n                cntdeasupra_d++;\n            }\n        }\n    }\n}\nvoid afis()\n{\n    for (int i = 1; i <= n; i++)\n    {\n        for (int j = 1; j <= n; j++)\n            fout << v[i][j] << \" \";\n        fout << endl;\n    }\n}\nint main()\n{\n    citire();\n    construire();\n    afis();\n    return 0;\n}\n"
+  },
+  {
+    "id": 136,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint na, nb, va[101], vb[101], cnt;\nvoid citire()\n{\n    fin >> na >> nb;\n    for (int i = 1; i <= na; i++)\n        fin >> va[i];\n    for (int i = 1; i <= nb; i++)\n    {\n        fin >> vb[i];\n        for (int j = 1; j <= na; j++)\n        {\n            if (vb[i] % 10 == (va[j] % 100) / 10 && (vb[i] % 100) / 10 == va[j] % 10)\n                cnt++;\n            else if ((vb[i] % 100) / 10 == (va[j] % 100) / 10 && vb[i] % 10 == va[j] % 10)\n                cnt++;\n        }\n    }\n    fout << cnt;\n}\nint main()\n{\n    citire();\n    return 0;\n}"
+  },
+  {
+    "id": 137,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint n, d = 2, p, s;\nvoid citire()\n{\n    fin >> n;\n}\nvoid divPrim()\n{\n    while (n > 1)\n    {\n        p = 0;\n        while (n % d == 0)\n        {\n            p++;\n            n /= d;\n        }\n        if (p != 0 && p % 2 == 1)\n            s += d;\n        d++;\n        if (n > 1 && d * d > n) // d nu poate fi 1 ca intra in bucla\n            d = n;\n    }\n    fout << s;\n}\nint main()\n{\n    citire();\n    divPrim();\n    return 0;\n}"
+  },
+  {
+    "id": 138,
+    "text": "#include <iostream>\n#include <cstring>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint n, k, cnt;\nchar s[11], voc[] = \"aeiou\";\nvoid citire()\n{\n    fin >> n >> k;\n    for (int i = 1; i <= n; i++)\n    {\n        fin.getline(s, 11);\n        if (cnt <= k)\n        {\n            if (strchr(voc, s[strlen(s) - 1]) != NULL)\n            {\n                fout << s << endl;\n                cnt++;\n            }\n        }\n    }\n    if (cnt == 0)\n        fout << \"NU EXISTA\";\n}\nint main()\n{\n    citire();\n    return 0;\n}"
+  },
+  {
+    "id": 139,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint x, n, cx, nr = 1, start, cn, term1, term2;\nvoid citire()\n{\n    fin >> x;\n    cx = x;\n    while (cx)\n    {\n        nr *= 10;\n        cx /= 10;\n    }\n}\nvoid rezolvare()\n{\n    while (fin >> n)\n    {\n        if (start)\n        {\n            if (cn % nr == x && n % nr == x)\n            {\n                term1 = cn;\n                term2 = n;\n            }\n        }\n        cn = n;\n        start = 1;\n    }\n    fout << term1 << \" \" << term2;\n}\nint main()\n{\n    citire();\n    rezolvare();\n    return 0;\n}\n"
+  },
+  {
+    "id": 140,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint x, y, og, rez;\nint oglindit(int n)\n{\n    int og = 0;\n    while (n)\n    {\n        if (n % 2)\n            og = og * 10 + n % 10;\n        n /= 10;\n    }\n    return og;\n}\nvoid imog()\n{\n    fin >> x >> y;\n    if (oglindit(oglindit(x)) == oglindit(y))\n        rez = 1;\n    else\n        rez = 0;\n    fout << rez;\n}\nint main()\n{\n    imog();\n    return 0;\n}"
+  },
+  {
+    "id": 141,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint n, k, v[101][101];\nvoid citire()\n{\n    fin >> n >> k;\n    for (int i = 1; i <= n; i++)\n        for (int j = 1; j <= n; j++)\n            fin >> v[i][j];\n}\nvoid rezolvare()\n{\n    for (int j = 1; j <= n; j++)\n    {\n        if (k > j)\n        {\n            int aux = v[k][j];\n            v[k][j] = v[j][k];\n            v[j][k] = aux;\n        }\n    }\n}\nvoid afis()\n{\n    for (int i = 1; i <= n; i++)\n    {\n        for (int j = 1; j <= n; j++)\n            fout << v[i][j] << \" \";\n        fout << endl;\n    }\n}\nint main()\n{\n    citire();\n    rezolvare();\n    afis();\n    return 0;\n}"
+  },
+  {
+    "id": 142,
+    "text": "#include <iostream>\n#include <fstream>\nusing namespace std;\nifstream fin(\"f.in\");\nofstream fout(\"f.out\");\nint x, y, ok = 1, cnt;\nvoid citire()\n{\n    fin >> x >> y;\n}\nvoid rezolvare()\n{\n    for (int i = 1; ok == 1; i++)\n    {\n        if (y - (2 * i) == x)\n        {\n            cnt = i;\n            ok = 0;\n        }\n    }\n    fout << y << \" \";\n    for (int i = cnt; i >= 1; i--)\n    {\n        fout << y - (2 * i) << \" \";\n        y = y - (2 * i);\n    }\n}\nint main()\n{\n    citire();\n    rezolvare();\n    return 0;\n}"
   }
   ]
