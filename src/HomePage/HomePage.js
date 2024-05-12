@@ -22,7 +22,7 @@ const HomePage = () => {
                 bacalaureat la informatică! <br />
                 &bull; Aici vei găsi resurse care te vor ajuta să
                 înveti/recapitulezi pentru examen. Trebuie să știi că, uneori,
-                pot exista mici lipsuri sau greșeli în informatii. <br />
+                pot exista lipsuri sau greșeli în informatii. <br />
                 &bull; Dacă ai sugestii, te rog să dai un feedback la{" "}
                 <span className={"underline"}>
                   recapitulareInfoBac@gmail.com.
